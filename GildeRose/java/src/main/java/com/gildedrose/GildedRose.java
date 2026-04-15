@@ -1,21 +1,15 @@
 package com.gildedrose;
 
-public class Item {
+class GildedRose {
+    Item[] items;
 
-    public String name;
-
-    public int sellIn;
-
-    public int quality;
-
-    public Item(String name, int sellIn, int quality) {
-        this.name = name;
-        this.sellIn = sellIn;
-        this.quality = quality;
+    public GildedRose(Item[] items) {
+        this.items = items;
     }
 
-    @Override
-    public String toString() {
-        return this.name + ", " + this.sellIn + ", " + this.quality;
+    public void updateQuality() {
+        for (Item item : items) {
+            ItemUpdaterFactory.getUpdater(item.name).update(item);
+        }
     }
 }
